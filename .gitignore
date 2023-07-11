@@ -1,0 +1,8 @@
+.vscode/
+*.o
+game
+raposa
+controlador
+exemplo1
+exemplo2
+dump.rdb

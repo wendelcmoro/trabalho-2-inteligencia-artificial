@@ -1,0 +1,44 @@
+-----Alunos-----
+Wendel Caio Moro - GRR20182641
+Victor Matheus Alflen - GRR20182599
+
+
+-----Compilação-----
+
+Arquivos:
+    - tabuleiro.c - arquivo original do professor
+    - tabuleiro.h - arquivo adaptado do professor, para compilar junto do arquivo C++
+    - game.cpp - arquivo com a implementação do Minimax do jogo "A raposa e os gansos"
+
+Observações:
+    Optamos por manter o arquivo e biblioteca originais do professor, no caso "tabuleiro.c"
+    e "tabuleiro.h", e utilizamos no nosso código como biblioteca para comunicar com o servidor 
+    redis. Para isso, adaptamos o makefile, para compilar o "tabuleiro.c" em "tabuleiro.o" e linkar
+    este arquivo com "game.cpp".
+
+-----Execução-----
+    Para executar o programa como raposa ou ganso, basta fazer o mesmo que no exemplo2. O programa recebe um parâmetros
+    'g' ou 'r' especificando quem é o jogador: Segue abaixo um exemplo:
+        ./game g  #para executar a IA como ganso
+    ou
+        ./game r  #para executar a IA como raposa
+
+-----Implementação-----
+
+Implementamos a IA do jogo utilizando o algoritmo de Minimax sem fazer o uso da poda alfa-beta. A árvore
+de busca possui uma profundidade máxima de 6 níveis, de forma que para o sexto nível é verificado o quão bom
+é o estado com base nas heurísticas da raposa e do ganso.
+
+-----Heurísticas Utilizadas-----
+
+Raposa:
+    A heurística da raposa calcula a quantidade de gansos restantes no tabuleiro. Quanto menos gansos, maior
+    a pontuação que a heuristica.
+
+Gansos:
+    A heurística de gansos utiliza a mesma estratégia da heurística da raposa, ou seja na quantidade de gansos restantes 
+    no tabuleiro. Ao mesmo tempo, também recebe pontuação se baseando na quantidade de direções que a raposa não consegue 
+    se mover ou pular.
+    A quantidade de espaços livres em cada ganso é outra heurística utilizada em conjunto com as duas anteriores, cada ganso 
+    inicia com 4 pontos e perde 1 ponto para cada espaço livre em volta dele.
+    
